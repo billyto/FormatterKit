@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.subspec 'AddressFormatter' do |ss|
     ss.source_files = 'FormatterKit/TTTAddressFormatter.{h,m}'
     ss.resources = 'Localizations/**'
-    ss.frameworks = 'AddressBook'
+    ss.frameworks = 'AddressBook', 'AddressBookUI'
   end
 
   s.subspec 'ArrayFormatter' do |ss|
