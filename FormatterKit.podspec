@@ -11,12 +11,13 @@ Pod::Spec.new do |s|
   s.description = "FormatterKit is a collection of well-crafted NSFormatter subclasses for things like units of information, distance, and relative time intervals. Each formatter abstracts away the complex business logic of their respective domain, so that you can focus on the more important aspects of your application."
 
   s.requires_arc = true
+  
+  s.prefix_header_contents = "#import <AddressBook/AddressBook.h>"
 
   s.subspec 'AddressFormatter' do |ss|
     ss.source_files = 'FormatterKit/TTTAddressFormatter.{h,m}'
     ss.resources = 'Localizations/**'
     ss.frameworks = 'AddressBook', 'AddressBookUI'
-    s.prefix_header_contents = "#import <AddressBook/AddressBook.h>"
   end
 
   s.subspec 'ArrayFormatter' do |ss|
