@@ -54,4 +54,12 @@ Pod::Spec.new do |s|
     ss.resources = 'Localizations/**'
   end
   
+  def s.post_install(target)
+    prefix_header = config.project_pods_root + 'Pods-FormatterKit-prefix.pch'
+    text = "#import <AddressBook/AddressBook.h>\n#import <AddressBookUI/AddressBookUI.h>\n" + prefix_header.read
+    prefix_header.open('w') { |file| file.write(text) }
+  end
+  
+  
+  
 end
