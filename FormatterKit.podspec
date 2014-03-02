@@ -54,10 +54,4 @@ Pod::Spec.new do |s|
     ss.resources = 'Localizations/**'
   end
   
-  post_install do | installer |
-  prefix_header = config.project_pods_root + 'Pods-prefix.pch'
-  text = "#import <AddressBook/AddressBook.h>\n" + prefix_header.read
-  prefix_header.open('w') { |file| file.write(text) }
-end
-  
 end
