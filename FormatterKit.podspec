@@ -11,8 +11,6 @@ Pod::Spec.new do |s|
   s.description = "FormatterKit is a collection of well-crafted NSFormatter subclasses for things like units of information, distance, and relative time intervals. Each formatter abstracts away the complex business logic of their respective domain, so that you can focus on the more important aspects of your application."
 
   s.requires_arc = true
-  
-  s.prefix_header_contents = "#import <AddressBook/AddressBook.h>"
 
   s.subspec 'AddressFormatter' do |ss|
     ss.source_files = 'FormatterKit/TTTAddressFormatter.{h,m}'
@@ -55,4 +53,11 @@ Pod::Spec.new do |s|
     ss.source_files = 'FormatterKit/TTTURLRequestFormatter.{h,m}'
     ss.resources = 'Localizations/**'
   end
+  
+  post_install do | installer |
+  prefix_header = config.project_pods_root + 'Pods-prefix.pch'
+  text = "#import <AddressBook/AddressBook.h>\n" + prefix_header.read
+  prefix_header.open('w') { |file| file.write(text) }
+end
+  
 end
